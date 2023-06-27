@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Topic：詳細{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'topic/topic.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <div class="detail-item">
+            <h2>{{ object.title }}</h2>
+            {% if object.thumbnail %}
+                <img class="detail-image" src="{{ object.thumbnail.url }}" alt="Thumbnail">
+            {% endif %}
+            <p>{{ object.text | safe }}</p>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block additional_js %}
+    <script src="{% static 'topic/topic.js' %}"></script>
+{% endblock additional_js %}

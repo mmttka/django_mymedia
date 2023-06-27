@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home：一覧{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Topic：最新ニュース</h2>
+        <div class="grid-container">
+            {% for topic in first_list|slice:"3" %}
+                <div class="grid-item">
+                    <h3>{{ topic.title }}</h3>
+                    <img src="{{ topic.thumbnail.url }}" alt="サムネイル画像">
+                    <p>{{ topic.text | truncatechars_html:100 | safe }}</p>
+                    <a href="{% url 'detail-topic' topic.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Technology：最新記事</h2>
+        <div class="grid-container">
+            {% for tech in second_list|slice:"3" %}
+                <div class="grid-item">
+                    <h3>{{ tech.title }}</h3>
+                    {% if tech.thumbnail %}
+                        <img src="{{ tech.thumbnail.url }}" alt="Thumbnail">
+                    {% endif %}
+                    <p>{{ tech.text | truncatechars_html:100 | safe }}</p>
+                    <a href="{% url 'detail-tech' tech.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>用語：最新</h2>
+        <div class="grid-container">
+            {% for term in third_list|slice:"3" %}
+                <div class="grid-item">
+                    <h3>{{ term.title }}</h3>
+                    <p>{{ term.text | truncatechars_html:100 | safe }}</p>
+                    <a href="{% url 'detail-term' term.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block additional_js %}
+    <script src="{% static 'home/home.js' %}"></script>
+{% endblock additional_js %}

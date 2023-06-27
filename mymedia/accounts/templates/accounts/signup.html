@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}アカウント作成{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+<div class="container">
+
+    <h1>
+        アカウント作成
+    </h1>
+
+    <form method="post" class="account-form">{% csrf_token %}
+        <input type="text" name="username" placeholder="ユーザーID" class="form-field">
+        <input type="password" name="password1" placeholder="パスワード" class="form-field">
+        <input type="password" name="password2" placeholder="パスワード確認用" class="form-field">
+        <small>パスワードは英数字かつ8文字以上で設定してください</small>
+
+        {% if form.non_field_errors %}
+            <span>
+                利用できないユーザーIDやパスワードの可能性があります。入力内容をご確認ください
+            </span>
+        {% endif %}
+             <button type="submit">アカウント作成</button>
+    </form>
+</div>
+{% endblock content %}

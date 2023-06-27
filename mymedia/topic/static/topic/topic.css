@@ -1,0 +1,47 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #add8e6; /* 細い青線枠 */
+    border-radius: 10px; /* 角を丸く */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* 影をつける */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid #444;
+    padding: 20px;
+    background-color: #f0f8ff; /* 最大限に薄い青 */
+    text-align: center;
+    border-radius: 10px; /* 角を丸く */
+    transition: all 0.5s;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: #add8e6; /* ホバー時に薄めの青が少し濃く */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* 画像も角を丸く */
+}
+
+.detail-item {
+    padding: 20px;
+    background-color: #f0f8ff;
+    text-align: center; 
+}
+
+.detail-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Technology：一覧{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'tech/tech.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Technology</h2>
+        <a class="add-btn" href="{% url 'add_form' %}">「Technology」記事を追加する</a><br>
+
+        <div class="grid-container">
+            {% for item in object_list %}
+                <div class="grid-item">
+                    <h3>{{ item.title }}</h3>
+                    {% if item.thumbnail %}
+                        <img src="{{ item.thumbnail.url }}" alt="Thumbnail">
+                    {% endif %}
+                    <p>{{ item.text | truncatechars_html:100 | safe }}</p>
+                    <a href="{% url 'detail-tech' item.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% include 'components/pagination.html' %}
+    </div>
+{% endblock content %}
+
+

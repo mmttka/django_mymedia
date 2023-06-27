@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}用語：一覧{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'term/term.css' %}">
+{% endblock additional_css %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>用語一覧</h2>
+        <ul class="list-style">
+            {% for item in object_list %}
+                <li class="list-item">
+                    <a href="{% url 'detail-term' item.pk %}" class="list-link">{{ item.title }}</a>
+                    <p class="list-desc">{{ item.text | truncatechars_html:100 | safe }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        {% include 'components/pagination.html' %}
+    </div>
+{% endblock content %}

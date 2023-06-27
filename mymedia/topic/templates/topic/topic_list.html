@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Topic：一覧{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'topic/topic.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Topic</h2>
+        <div class="grid-container">
+            {% for item in object_list %}
+                <div class="grid-item">
+                    <h3>{{ item.title }}</h3>
+                    <img src="{{ item.thumbnail.url }}" alt="Thumbnail">
+                    <p>{{ item.text | truncatechars_html:100 | safe }}</p>
+                    <a href="{% url 'detail-topic' item.pk %}">詳細へ</a>
+                </div>
+            {% endfor %}
+        </div>
+        {% include 'components/pagination.html' %}
+    </div>
+{% endblock content %}
+
+
+{% block additional_js %}
+    <script src="{% static 'topic/topic.js' %}"></script>
+{% endblock additional_js %}

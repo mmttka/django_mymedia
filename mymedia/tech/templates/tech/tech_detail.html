@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'tech/tech.css' %}">
+{% endblock additional_css %}
+
+{% block title %}Technology：詳細{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div>
+        {% if object.thumbnail %}
+        <img src="{{ object.thumbnail.url }}" alt="サムネイル画像">
+        {% endif %}
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.text | safe}}</p>
+        <div class="buttons">
+            <a class="btn" href="{% url 'list-tech' %}">一覧へ</a>
+            <a class="btn" href="{% url 'update-tech' object.pk %}">編集する</a>
+            <a class="btn" href="{% url 'delete-tech' object.pk %}">削除する</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Technology：追加{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'topic/topic.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Technology：新規作成</h2>
+        <form class="grid-container" action="{% url 'add_form' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div>
+                {{ form.as_p }}
+                <input type="submit" value="作成する">
+            </div>
+        </form>
+    </div>
+{% endblock content %}

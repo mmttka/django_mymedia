@@ -1,0 +1,79 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff8f8; /* 薄いピンク色の背景 */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    border: 1px solid #444;
+    padding: 20px;
+    background-color: #ffe5e5; /* もっと薄いピンク */
+    text-align: center;
+    border-radius: 10px; /* 角を丸く */
+    transition: all 0.5s;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffdcdc; /* ホバー時にピンクが少し濃く */
+}
+
+.add-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #787474;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.add-btn:hover {
+    background-color: #666;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* 画像も角を丸く */
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn:active {
+    background-color: #003d79;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+}
+
+.buttons {
+    margin-top: 20px;
+}
+

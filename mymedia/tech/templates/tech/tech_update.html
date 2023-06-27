@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Technology：更新{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'topic/topic.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Technology：更新</h2>
+        <form method="post" enctype="multipart/form-data" class="form-container">{% csrf_token %}
+            {{ form.as_p }}
+            <div class="buttons">
+                <button type="submit" class="btn">修正する</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

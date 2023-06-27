@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Technology：削除{% endblock title %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'topic/topic.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Technology：削除</h2>
+        <form method="post" class="form-container">{% csrf_token %}
+            <div class="buttons">
+                <button type="submit" class="btn">「{{ object.title }}」を削除する</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

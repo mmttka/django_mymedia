@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | HealthTech</title>
+    <style>
+        /* header styles */
+        header {
+            background-color: #f0f8ff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif;
+            font-size: 2.5rem;
+            color: #444;
+        }
+
+        /* nav styles */
+        nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #add8e6;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+    </style>
+    {% block additional_css %}{% endblock additional_css %}
+</head>
+<body>
+    <header>
+        <h1>
+            Health Tech Media
+        </h1>
+    </header>
+    
+    <nav>
+        <div>
+            <a href="{% url 'list-home' %}">Home</a>
+            <a href="{% url 'list-topic' %}">Topic</a>
+            <a href="{% url 'list-tech' %}">Technology</a>
+            <a href="{% url 'list-term' %}">用語一覧</a>
+        </div>
+        <div>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}">ログアウト</a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">ログイン</a>
+                <a href="{% url 'accounts:signup' %}">会員登録</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+    {% block additional_js %}{% endblock additional_js %}
+</body>
+</html>
